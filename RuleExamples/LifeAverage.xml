@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CA>
+	<type>LifeAverage</type>
+	<frameRate>5</frameRate>
+	<cellSize>2</cellSize>
+	<neighborhood>Moore</neighborhood>
+	<radius>1</radius>
+	<initialState>
+		<initialStateType>random</initialStateType>
+		<initialAliveProbability>0.5</initialAliveProbability>
+	</initialState>
+	<rule>
+		<rules>
+            <entry key="0" newState="9" color="20 0 0"></entry>
+            <entry key="1" newState="8" color="40 0 0"></entry>
+            <entry key="2" newState="7" color="60 0 0"></entry>
+            <entry key="3" newState="6" color="80 0 0"></entry>
+            <entry key="4" newState="9" color="100 0 0"></entry>
+            <entry key="5" newState="4" color="120 0 0"></entry>
+            <entry key="6" newState="5" color="140 0 0"></entry>
+            <entry key="7" newState="2" color="160 0 0"></entry>
+            <entry key="8" newState="4" color="180 0 0"></entry>
+            <entry key="9" newState="0" color="200 0 0"></entry>
+        </rules>
+	</rule>
+	<display>
+		<strokeWeight>0</strokeWeight>
+		<strokeColor r="0" g="0" b="0"></strokeColor>
+	</display>
+</CA>

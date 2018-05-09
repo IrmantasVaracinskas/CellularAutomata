@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CA>
+	<type>Life</type>
+	<frameRate>1000</frameRate>
+	<cellSize>2</cellSize>
+	<neighborhood>moore</neighborhood>
+	<radius>2</radius>
+	<initialState>
+		<initialStateType>random</initialStateType>
+		<initialAliveProbability>0.5</initialAliveProbability>
+		<aliveCells>
+			<entry x="10" y="10"></entry>
+			<entry x="10" y="11"></entry>
+			<entry x="12" y="12"></entry>
+			<entry x="12" y="11"></entry>
+		</aliveCells>
+	</initialState>
+	<rule>
+		<ruleType>Count</ruleType>
+		<defaultColors>
+			<alive colorIfAlive="255 255 255"></alive>
+			<dead colorIfDead="255 255 255"></dead>
+		</defaultColors>
+		<rules>
+			<entry key="0" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="1" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="2" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="3" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="4" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="5" valueIfAlive="1" valueIfDead="0" colorIfAlive="0 150 50"></entry>
+			<entry key="6" valueIfAlive="0" valueIfDead="1" colorIfDead="255 0 0"></entry>
+			<entry key="7" valueIfAlive="1" valueIfDead="1" colorIfAlive="0 150 50" colorIfDead="255 0 0"></entry>
+			<entry key="8" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="9" valueIfAlive="0" valueIfDead="1" colorIfDead="255 0 0"></entry>
+			<entry key="10" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="11" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="12" valueIfAlive="1" valueIfDead="0" colorIfAlive="0 150 50"></entry>
+			<entry key="13" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="14" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="15" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="16" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="17" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="18" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="19" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="20" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="21" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="22" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="23" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="24" valueIfAlive="0" valueIfDead="0"></entry>
+		</rules>
+	</rule>
+	<display>
+		<strokeWeight>0</strokeWeight>
+		<strokeColor r="10" g="26" b="88"></strokeColor>
+	</display>
+</CA>
