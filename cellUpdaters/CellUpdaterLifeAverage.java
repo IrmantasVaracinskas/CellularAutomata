@@ -10,10 +10,14 @@ import processing.Sketch;
 public class CellUpdaterLifeAverage implements CellUpdater {
     NeighbourCounter nCounter;
     int totalNeighbors;
+
+    int[] cellsCount;
     public CellUpdaterLifeAverage(NeighbourCounter _nCounter)
     {
         nCounter = _nCounter;
         totalNeighbors = nCounter.getTotalNeighbours() - 1;
+
+        cellsCount = new int[Sketch.ruleMap.size() - 1];
     }
 
     public void updateCell(Sketch.Cell cell) {
@@ -27,5 +31,20 @@ public class CellUpdaterLifeAverage implements CellUpdater {
             average = Sketch.ruleMap.size() - 1;
         cell.futureState = Sketch.ruleMap.get(average).left;
         cell.cellColor = Sketch.ruleMap.get(average).right;
+
+        cellsCount[(int)cell.futureState]++;
+    }
+
+    @Override
+    public int[] getCellsCount() {
+        return cellsCount;
+    }
+
+    @Override
+    public void resetCellsCount() {
+        for(int i = 0; i < cellsCount.length; ++i)
+        {
+            cellsCount[i] = 0;
+        }
     }
 }

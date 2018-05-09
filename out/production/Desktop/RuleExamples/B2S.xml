@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CA>
+	<type>Life</type>
+	<frameRate>1000</frameRate>
+	<cellSize>2</cellSize>
+	<neighborhood>Moore</neighborhood>
+	<radius>1</radius>
+    <display>
+        <strokeWeight>0</strokeWeight>
+        <strokeColor r="0" g="0" b="0"></strokeColor>
+    </display>
+    <rule>
+        <ruleType>Count</ruleType>
+        <defaultColors>
+            <alive colorIfAlive="255 255 255"></alive>
+            <dead colorIfDead="255 255 255"></dead>
+        </defaultColors>
+        <rules>
+            <entry key="0" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="1" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="2" valueIfAlive="0" valueIfDead="1" colorIfDead="0 0 0"></entry>
+            <entry key="3" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="4" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="5" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="6" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="7" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="8" valueIfAlive="0" valueIfDead="0"></entry>
+        </rules>
+    </rule>
+	<initialState>
+		<initialStateType>given</initialStateType>
+		<aliveCells>
+			<entry x="125" y="125"></entry>
+			<entry x="125" y="126"></entry>
+			<entry x="126" y="127"></entry>
+			<entry x="123" y="126"></entry>
+		</aliveCells>
+	</initialState>
+</CA>

@@ -54,6 +54,7 @@ public class Sketch extends PApplet{
     }
     public void setup()
     {
+        surface.setResizable(true);
         getConfigFile();
         while(filename == null) {
             print("");
@@ -84,6 +85,24 @@ public class Sketch extends PApplet{
         board.display();
         popMatrix();
         board.update();
+
+        drawStatistics();
+    }
+
+    void drawStatistics()
+    {
+        int[] cellsStates = board.cellUpdater.getCellsCount();
+        fill(0);
+        rect(0, 0, 150, 40 + cellsStates.length * 12);
+        fill(255);
+        textSize(12);
+        text("Generations: " + frameCount, 5, 10);
+        text("Total cells: " + board.cells.length, 5, 34);
+        for(int i = 0; i < cellsStates.length; i++)
+        {
+            text("State " + i + ": " + cellsStates[i], 5, 46 + 12 * i);
+        }
+
     }
 
     void setupStroke()
@@ -125,24 +144,11 @@ public class Sketch extends PApplet{
 
         public void update()
         {
+            cellUpdater.resetCellsCount();
             int i = 0;
             i++;
             for(Cell cell : cells)
             {
-//                switch (neighborhood) {
-//                    case MOORE:
-//                    case NEUMAN:
-//                        int neighbours = nCounter.countNeighbours(cell);
-//                        Pair<Integer, Integer> value = ruleMap.get(neighbours);
-//                        if(cell.state > 0)
-//                        {
-//                            cell.cellColor = colorMap.get(neighbours).left;
-//                            cell.futureState = value.left;
-//                        } else{
-//                            cell.cellColor = colorMap.get(neighbours).right;
-//                            cell.futureState = value.right;
-//                        }
-//                }
                 cellUpdater.updateCell(cell);
             }
 
@@ -179,10 +185,6 @@ public class Sketch extends PApplet{
 
         public void display()
         {
-            //fill(255 - state);
-            // if(state == 0)
-            //     fill(255);
-            // else fill(state);
             fill(cellColor);
             rect(x * size, y * size, size, size);
         }
@@ -190,6 +192,19 @@ public class Sketch extends PApplet{
 
     void loadConfiguration(String fileName) {
         XML root = loadXML(fileName);
+        try
+        {
+            XML frameSizeXml = root.getChild("frameSize");
+            int x = frameSizeXml.getInt("width");
+            int y = frameSizeXml.getInt("height");
+
+            surface.setSize(x, y);
+            println("Frame size set to " + x + " x " + y);
+        }
+        catch (Exception e)
+        {
+            println("Incorrect or no frame size given. Using default");
+        }
         XML typeXML = root.getChild("type");
         radius = root.getChild("radius").getIntContent();
         type = typeXML.getContent().toLowerCase();
@@ -318,21 +333,9 @@ public class Sketch extends PApplet{
         ruleMap = new HashMap<Integer, Pair<Integer, Integer>>();
         colorMap = new HashMap<Integer, Pair<Integer, Integer>>();
 
-        try{
-            defaultAliveColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("alive").getString("colorIfAlive"));
-        }
-        catch (Exception e)
-        {
-            defaultAliveColor = color(255);
-        }
+        defaultAliveColor = getDefaultAliveColor(ruleXML);
+        defaultDeadColor = getDefaultDeadColor(ruleXML);
 
-        try{
-            defaultDeadColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("dead").getString("colorIfDead"));
-        }
-        catch (Exception e)
-        {
-            defaultDeadColor = color(255);
-        }
         println("radius: "+radius);
 
         if(ruleType.equals(RuleType.COUNT.name().toLowerCase())) {
@@ -365,21 +368,9 @@ public class Sketch extends PApplet{
         colorMap = new HashMap<>();
 
         println("radius: "+radius);
-        try{
-            defaultAliveColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("alive").getString("colorIfAlive"));
-        }
-        catch (Exception e)
-        {
-            defaultAliveColor = color(255);
-        }
 
-        try{
-            defaultDeadColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("dead").getString("colorIfDead"));
-        }
-        catch (Exception e)
-        {
-            defaultDeadColor = color(255);
-        }
+        defaultAliveColor = getDefaultAliveColor(ruleXML);
+        defaultDeadColor = getDefaultDeadColor(ruleXML);
 
         if(ruleType.equals(RuleType.COUNT.name().toLowerCase())) {
             int ruleEntriesCount = 4 * radius + 1;
@@ -395,6 +386,31 @@ public class Sketch extends PApplet{
         }
         else if(ruleType.equals(RuleType.MATCH.name().toLowerCase())) {
         }
+    }
+
+    private int getDefaultAliveColor(XML ruleXML)
+    {
+        int defaultAliveColor;
+        try{
+            defaultAliveColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("alive").getString("colorIfAlive"));
+        }
+        catch (Exception e)
+        {
+            defaultAliveColor = color(255);
+        }
+        return defaultAliveColor;
+    }
+    private int getDefaultDeadColor(XML ruleXML)
+    {
+        int defaultDeadColor;
+        try{
+            defaultDeadColor = getColorFromString(ruleXML.getChild("defaultColors").getChild("dead").getString("colorIfDead"));
+        }
+        catch (Exception e)
+        {
+            defaultDeadColor = color(255);
+        }
+        return defaultDeadColor;
     }
 
     private Pair<Integer, Integer> getRule(XML ruleEntry)

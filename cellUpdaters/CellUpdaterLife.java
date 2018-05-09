@@ -10,9 +10,13 @@ import processing.Sketch;
  */
 public class CellUpdaterLife implements CellUpdater {
     NeighbourCounter nCounter;
+    int aliveCells;
+    int deadCells;
     public CellUpdaterLife(NeighbourCounter _nCounter)
     {
         nCounter = _nCounter;
+        aliveCells = 0;
+        deadCells = 0;
     }
 
     public void updateCell(Sketch.Cell cell)
@@ -27,5 +31,20 @@ public class CellUpdaterLife implements CellUpdater {
             cell.cellColor = Sketch.colorMap.get(neighbours).right;
             cell.futureState = value.right;
         }
+        if(cell.futureState > 0)
+            ++aliveCells;
+        else
+            ++deadCells;
+    }
+
+    public int[] getCellsCount()
+    {
+        return new int[]{deadCells, aliveCells};
+    }
+
+    public void resetCellsCount()
+    {
+        deadCells = 0;
+        aliveCells = 0;
     }
 }

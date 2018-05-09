@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CA>
+	<type>Life</type>
+	<cellSize>2</cellSize>
+	<neighborhood>Neuman</neighborhood>
+	<radius>1</radius>
+	<initialState>
+		<initialStateType>random</initialStateType>
+		<initialAliveProbability>0.7</initialAliveProbability>
+		<aliveCells>
+			<entry x="10" y="10"></entry>
+			<entry x="11" y="11"></entry>
+			<entry x="11" y="12"></entry>
+			<entry x="10" y="12"></entry>
+			<entry x="9" y="12"></entry>
+			<entry x="100" y="100"></entry>
+			<entry x="100" y="101"></entry>
+			<entry x="100" y="102"></entry>
+			<entry x="101" y="102"></entry>
+			<entry x="102" y="102"></entry>
+			<entry x="103" y="101"></entry>
+			<entry x="104" y="100"></entry>
+			<entry x="104" y="99"></entry>
+			<entry x="104" y="98"></entry>
+			<entry x="103" y="98"></entry>
+			<entry x="102" y="98"></entry>
+			<entry x="101" y="99"></entry>
+		</aliveCells>
+	</initialState>
+	<rule>
+		<ruleType>Count</ruleType>
+		<defaultColors>
+			<alive colorIfAlive="255 255 255"></alive>
+			<dead colorIfDead="255 255 255"></dead>
+		</defaultColors>
+		<rules>
+			<entry key="0" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="1" valueIfAlive="0" valueIfDead="0"></entry>
+			<entry key="2" valueIfAlive="1" valueIfDead="0" colorIfAlive="0 0 0" ></entry>
+			<entry key="3" valueIfAlive="0" valueIfDead="1" colorIfAlive="255 255 255" colorIfDead="0 0 0"></entry>
+			<entry key="4" valueIfAlive="0" valueIfDead="0" colorIfAlive="255 255 255"></entry>
+		</rules>
+	</rule>
+	<display>
+		<strokeWeight>0</strokeWeight>
+		<strokeColor r="10" g="26" b="88"></strokeColor>
+	</display>
+</CA>

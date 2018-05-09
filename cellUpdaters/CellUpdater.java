@@ -7,4 +7,7 @@ import processing.Sketch;
  */
 public interface CellUpdater {
     void updateCell(Sketch.Cell cell);
+
+    int[] getCellsCount();
+    void resetCellsCount();
 }

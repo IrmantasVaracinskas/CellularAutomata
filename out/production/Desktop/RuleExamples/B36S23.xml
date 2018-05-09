@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CA>
+	<type>Life</type>
+	<frameRate>1000</frameRate>
+	<cellSize>2</cellSize>
+	<neighborhood>Moore</neighborhood>
+	<radius>1</radius>
+    <display>
+        <strokeWeight>0</strokeWeight>
+        <strokeColor r="0" g="0" b="0"></strokeColor>
+    </display>
+    <rule>
+        <ruleType>Count</ruleType>
+        <defaultColors>
+            <alive colorIfAlive="255 255 255"></alive>
+            <dead colorIfDead="255 255 255"></dead>
+        </defaultColors>
+        <rules>
+            <entry key="0" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="1" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="2" valueIfAlive="1" valueIfDead="0" colorIfAlive="200 0 0"></entry>
+            <entry key="3" valueIfAlive="1" valueIfDead="1" colorIfAlive="255 0 0" colorIfDead="255 0 0"></entry>
+            <entry key="4" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="5" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="6" valueIfAlive="0" valueIfDead="1" colorIfDead="255 0 0"></entry>
+            <entry key="7" valueIfAlive="0" valueIfDead="0"></entry>
+            <entry key="8" valueIfAlive="0" valueIfDead="0"></entry>
+        </rules>
+    </rule>
+	<initialState>
+		<initialStateType>given</initialStateType>
+		<initialAliveProbability>0.2</initialAliveProbability>
+		<aliveCells>
+
+			<entry x="100" y="100"></entry>
+			<entry x="100" y="101"></entry>
+			<entry x="100" y="102"></entry>
+			<entry x="101" y="102"></entry>
+			<entry x="102" y="102"></entry>
+			<entry x="103" y="101"></entry>
+			<entry x="104" y="100"></entry>
+			<entry x="104" y="99"></entry>
+			<entry x="104" y="98"></entry>
+			<entry x="103" y="98"></entry>
+			<entry x="102" y="98"></entry>
+			<entry x="101" y="99"></entry>
+		</aliveCells>
+	</initialState>
+</CA>
